@@ -49,6 +49,7 @@ func Run() error {
 	// Custom Middlewares
 	mux.Use(handler.WriteToConsole)
 	mux.Use(handler.NoSurf)
+	mux.Use(sess.LoadAndSave)
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 	if err != nil {
